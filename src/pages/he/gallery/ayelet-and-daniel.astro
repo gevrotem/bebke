@@ -1,0 +1,38 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { galleryTemplate } from '../../../data/site.he';
+const t = galleryTemplate;
+---
+<Layout lang="he" dir="rtl" title={t.title} description={t.description} canonical={`https://bebke.co.il/he/gallery/${t.slug}/`}>
+  <section class="max-w-4xl mx-auto px-6 pt-20 pb-10 text-center">
+    <h1 class="text-4xl md:text-5xl font-serif font-semibold">{t.heroH1}</h1>
+    <p class="mt-4 text-stone-500">{t.heroSub}</p>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-8">
+    {t.storyColumns.map((col) => (
+      <div>
+        <h2 class="font-serif text-lg font-semibold mb-2">{col.title}</h2>
+        <p class="text-stone-600 text-sm">{col.body}</p>
+      </div>
+    ))}
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+    {Array.from({ length: 8 }).map(() => (
+      <div class="aspect-square bg-stone-200 rounded-lg flex items-center justify-center text-stone-400 text-xs">תמונה בהמתנה</div>
+    ))}
+  </section>
+
+  <section class="bg-stone-100 py-16">
+    <blockquote class="max-w-2xl mx-auto px-6 text-center italic text-lg text-stone-700">
+      "{t.testimonial.quote}"
+      <footer class="mt-4 not-italic font-semibold text-rose-600">— {t.testimonial.author}</footer>
+    </blockquote>
+  </section>
+
+  <section class="py-16 text-center space-y-4">
+    <div><a href="/he/gallery/" class="text-rose-600 font-semibold hover:underline">{t.backToGallery}</a></div>
+    <div><a href="/he/contact/" class="inline-block bg-rose-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-rose-700">{t.contactCta}</a></div>
+  </section>
+</Layout>

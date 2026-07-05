@@ -1,0 +1,40 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { blog } from '../../../data/site.en';
+---
+<Layout lang="en" dir="ltr" title={blog.title} description={blog.description} canonical="https://bebke.com/en/blog/">
+  <section class="max-w-4xl mx-auto px-6 pt-20 pb-10 text-center">
+    <h1 class="text-4xl md:text-5xl font-serif font-semibold">{blog.heroH1}</h1>
+    <p class="mt-4 text-stone-600 max-w-2xl mx-auto">{blog.heroSub}</p>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 pb-8 flex flex-wrap gap-2 justify-center">
+    {blog.categories.map((c) => (
+      <span class="border border-stone-300 rounded-full px-4 py-1 text-sm text-stone-600">{c}</span>
+    ))}
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 py-10 grid md:grid-cols-2 gap-6">
+    {blog.posts.map((post) => (
+      <article class="border border-stone-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+        <p class="text-xs text-stone-400 mb-2">{post.date}</p>
+        <h2 class="font-serif text-xl font-semibold mb-2">{post.title}</h2>
+        <p class="text-stone-600 text-sm">{post.excerpt}</p>
+        <span class="inline-block mt-4 text-rose-600 font-semibold text-sm">Read more →</span>
+      </article>
+    ))}
+  </section>
+
+  <section class="bg-stone-100 py-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="font-serif text-2xl font-semibold mb-4">{blog.footerIntroTitle}</h2>
+      <p class="text-stone-700">{blog.footerIntroBody}</p>
+      <a href="/en/gallery/" class="inline-block mt-6 text-rose-600 font-semibold hover:underline">{blog.footerCta}</a>
+    </div>
+  </section>
+
+  <section class="py-16 text-center">
+    <p class="text-lg text-stone-700 mb-4">{blog.closingBody}</p>
+    <a href="/en/contact/" class="bg-rose-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-rose-700">{blog.closingCta}</a>
+  </section>
+</Layout>

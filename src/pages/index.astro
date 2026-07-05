@@ -1,0 +1,5 @@
+---
+// Root fallback: default to English. Domain-based routing (Cloudflare Function)
+// normally rewrites bebke.com -> /en and bebke.co.il -> /he before this is reached.
+return Astro.redirect('/en/', 302);
+---

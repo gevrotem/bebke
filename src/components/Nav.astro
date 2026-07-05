@@ -1,0 +1,46 @@
+---
+import * as en from '../data/site.en';
+import * as he from '../data/site.he';
+
+interface Props { lang: 'en' | 'he' }
+const { lang } = Astro.props;
+const t = lang === 'he' ? he : en;
+const base = `/${lang}`;
+---
+<header class="border-b border-stone-200 bg-white/90 backdrop-blur sticky top-0 z-50" x-data="{ mobileOpen: false, weddingTypesOpen: false }">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href={`${base}/`} class="text-xl font-serif font-semibold tracking-wide">Bebke</a>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href={`${base}/`} class="hover:text-rose-600 transition-colors">{t.nav.home}</a>
+      <a href={`${base}/about/`} class="hover:text-rose-600 transition-colors">{t.nav.about}</a>
+
+      <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+        <a href={`${base}/gallery/`} class="hover:text-rose-600 transition-colors">{t.nav.gallery}</a>
+        <div x-show="open" x-cloak x-transition class="absolute top-full mt-2 bg-white shadow-lg rounded-md py-2 min-w-[160px] border border-stone-100">
+          {t.nav.weddingTypeLinks.map((item) => (
+            <a href={`${base}${item.href}`} class="block px-4 py-2 text-sm hover:bg-rose-50 hover:text-rose-600">{item.label}</a>
+          ))}
+        </div>
+      </div>
+
+      <a href={`${base}/blog/`} class="hover:text-rose-600 transition-colors">{t.nav.blog}</a>
+      <a href={`${base}/contact/`} class="hover:text-rose-600 transition-colors">{t.nav.contact}</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a href={t.nav.langSwitchHref} class="text-sm font-semibold border border-stone-300 rounded-full px-3 py-1 hover:bg-stone-100">{t.nav.langSwitchLabel}</a>
+      <button class="md:hidden" @click="mobileOpen = !mobileOpen" aria-label="Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <div x-show="mobileOpen" x-cloak class="md:hidden border-t border-stone-200 bg-white px-6 py-4 flex flex-col gap-3 text-sm font-medium">
+    <a href={`${base}/`}>{t.nav.home}</a>
+    <a href={`${base}/about/`}>{t.nav.about}</a>
+    <a href={`${base}/gallery/`}>{t.nav.gallery}</a>
+    <a href={`${base}/blog/`}>{t.nav.blog}</a>
+    <a href={`${base}/contact/`}>{t.nav.contact}</a>
+  </div>
+</header>

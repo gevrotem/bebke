@@ -1,0 +1,52 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { contact, contactInfo } from '../../data/site.he';
+---
+<Layout lang="he" dir="rtl" title={contact.title} description={contact.description} canonical="https://bebke.co.il/he/contact/">
+  <section class="max-w-4xl mx-auto px-6 pt-20 pb-10 text-center">
+    <h1 class="text-4xl md:text-5xl font-serif font-semibold">{contact.heroH1}</h1>
+    <p class="mt-4 text-stone-500">{contact.heroSub}</p>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 pb-20 grid md:grid-cols-2 gap-12">
+    <div>
+      <p class="text-stone-700 mb-8">{contact.formIntro}</p>
+      <form class="space-y-4" x-data="{ submitted: false }" @submit.prevent="submitted = true">
+        <div>
+          <label class="block text-sm font-medium mb-1">{contact.formFields.name}</label>
+          <input type="text" name="name" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-rose-500" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">{contact.formFields.email}</label>
+          <input type="email" name="email" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-rose-500" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">{contact.formFields.phone}</label>
+          <input type="tel" name="phone" class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-rose-500" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">{contact.formFields.date}</label>
+          <input type="text" name="date" class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-rose-500" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">{contact.formFields.message}</label>
+          <textarea name="message" rows="4" class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-rose-500"></textarea>
+        </div>
+        <button type="submit" class="bg-rose-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-rose-700" x-show="!submitted">{contact.formFields.submit}</button>
+        <p x-show="submitted" x-cloak class="text-green-700 font-medium">תודה! נחזור אליכם בקרוב.</p>
+      </form>
+    </div>
+
+    <div class="bg-stone-100 rounded-xl p-8 space-y-4">
+      <h2 class="font-serif text-xl font-semibold mb-2">צרו קשר ישירות</h2>
+      <p><strong>טלפון (חינם):</strong> {contactInfo.phoneTollFree}</p>
+      <p><strong>וואטסאפ:</strong> {contactInfo.whatsapp}</p>
+      <p><strong>משרד בישראל:</strong> {contactInfo.israelOffice}</p>
+      <p><strong>מייל:</strong> <a href={`mailto:${contactInfo.email}`} class="text-rose-600 hover:underline">{contactInfo.email}</a></p>
+      <div class="pt-4 border-t border-stone-200 mt-4">
+        <p class="text-stone-600">{contact.faqTeaser}</p>
+        <a href="/he/contact/#faq" class="text-rose-600 font-semibold hover:underline">{contact.faqCta}</a>
+      </div>
+    </div>
+  </section>
+</Layout>

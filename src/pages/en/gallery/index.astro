@@ -1,0 +1,25 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { gallery } from '../../../data/site.en';
+---
+<Layout lang="en" dir="ltr" title={gallery.title} description={gallery.description} canonical="https://bebke.com/en/gallery/">
+  <section class="max-w-4xl mx-auto px-6 pt-20 pb-10 text-center">
+    <h1 class="text-4xl md:text-5xl font-serif font-semibold">{gallery.heroH1}</h1>
+    <p class="mt-4 text-stone-600">{gallery.heroSub}</p>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 py-10 columns-1 md:columns-3 gap-6 [column-fill:_balance]">
+    {gallery.weddings.map((w) => (
+      <a href={`/en/gallery/${w.slug}/`} class="block mb-6 break-inside-avoid bg-white border border-stone-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+        <h2 class="font-serif text-lg font-semibold">{w.title}</h2>
+        <p class="text-stone-500 text-sm mt-1">{w.venue} · {w.guests} Guests</p>
+      </a>
+    ))}
+  </section>
+
+  <section class="bg-rose-600 text-white py-16 text-center">
+    <h2 class="text-3xl font-serif font-semibold">{gallery.closingH2}</h2>
+    <p class="mt-4">{gallery.closingBody}</p>
+    <a href="/en/contact/" class="inline-block mt-6 bg-white text-rose-600 px-8 py-3 rounded-full font-semibold hover:bg-stone-100">Contact Us →</a>
+  </section>
+</Layout>
