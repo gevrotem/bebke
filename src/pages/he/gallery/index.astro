@@ -1,25 +1,28 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { gallery } from '../../../data/site.he';
+
+const cardColors = ['bg-white', 'bg-brand-mint', 'bg-brand-sky', 'bg-brand-yellow'];
 ---
 <Layout lang="he" dir="rtl" title={gallery.title} description={gallery.description} canonical="https://bebke.co.il/he/gallery/">
-  <section class="max-w-4xl mx-auto px-6 pt-20 pb-10 text-center">
-    <h1 class="text-4xl md:text-5xl font-serif font-semibold">{gallery.heroH1}</h1>
-    <p class="mt-4 text-stone-600">{gallery.heroSub}</p>
+  <section class="bg-brand-mint px-6 py-20 text-center">
+    <h1 class="text-5xl md:text-7xl font-black">{gallery.heroH1}</h1>
+    <p class="mt-4 max-w-2xl mx-auto text-lg font-medium">{gallery.heroSub}</p>
   </section>
 
-  <section class="max-w-6xl mx-auto px-6 py-10 columns-1 md:columns-3 gap-6 [column-fill:_balance]">
-    {gallery.weddings.map((w) => (
-      <a href={`/he/gallery/${w.slug}/`} class="block mb-6 break-inside-avoid bg-white border border-stone-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-        <h2 class="font-serif text-lg font-semibold">{w.title}</h2>
-        <p class="text-stone-500 text-sm mt-1">{w.venue} · {w.guests} אורחים</p>
+  <section class="max-w-6xl mx-auto px-6 py-16 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {gallery.weddings.map((w, i) => (
+      <a href={w.slug === 'ayelet-and-daniel' ? `/he/gallery/${w.slug}/` : '/he/gallery/'} class:list={["block p-6 border-2 border-black hover:bg-black hover:text-white transition-colors", cardColors[i % cardColors.length]]}>
+        <h3 class="font-black text-xl">{w.title}</h3>
+        <p class="mt-2 text-sm font-medium opacity-80">{w.venue}</p>
+        <p class="mt-1 text-sm font-bold">{w.guests} אורחים</p>
       </a>
     ))}
   </section>
 
-  <section class="bg-rose-600 text-white py-16 text-center">
-    <h2 class="text-3xl font-serif font-semibold">{gallery.closingH2}</h2>
-    <p class="mt-4">{gallery.closingBody}</p>
-    <a href="/he/contact/" class="inline-block mt-6 bg-white text-rose-600 px-8 py-3 rounded-full font-semibold hover:bg-stone-100">צרו קשר ←</a>
+  <section class="bg-brand-red text-black py-20 text-center px-6">
+    <h2 class="text-4xl md:text-5xl font-black">{gallery.closingH2}</h2>
+    <p class="mt-4 text-lg font-medium">{gallery.closingBody}</p>
+    <a href="/he/contact/" class="inline-block mt-6 bg-black text-brand-red px-8 py-3 font-bold rounded-full border-2 border-black hover:bg-white hover:text-black transition-colors">צור קשר ←</a>
   </section>
 </Layout>

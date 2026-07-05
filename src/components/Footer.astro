@@ -7,13 +7,18 @@ const { lang } = Astro.props;
 const t = lang === 'he' ? he : en;
 const base = `/${lang}`;
 ---
-<footer class="border-t border-stone-200 bg-white mt-16">
-  <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-stone-500">
+<footer class="bg-brand-red text-black mt-0">
+  <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-medium">
     <p>{t.footer.rights}</p>
-    <div class="flex items-center gap-6">
-      <a href={`${base}/`} class="hover:text-rose-600">{t.footer.sitemap}</a>
-      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-rose-600">Instagram</a>
-      <a href="https://pinterest.com" target="_blank" rel="noopener" aria-label="Pinterest" class="hover:text-rose-600">Pinterest</a>
+    <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-bold">
+      <a href={`${base}/gallery/`} class="hover:underline">{t.nav.gallery}</a>
+      <a href={`${base}/about/`} class="hover:underline">{t.nav.about}</a>
+      <a href={`${base}/contact/`} class="hover:underline">{t.nav.contact}</a>
+      <a href={`${base}/blog/`} class="hover:underline">{t.nav.blog}</a>
+    </nav>
+    <div class="flex items-center gap-4">
+      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="hover:underline">Instagram</a>
+      <a href="https://pinterest.com" target="_blank" rel="noopener" aria-label="Pinterest" class="hover:underline">Pinterest</a>
     </div>
   </div>
 </footer>

@@ -6,37 +6,40 @@ interface Props { lang: 'en' | 'he' }
 const { lang } = Astro.props;
 const t = lang === 'he' ? he : en;
 const base = `/${lang}`;
+const path = new URL(Astro.request.url).pathname;
+const isActive = (href: string) => path === href || path === href.replace(/\/$/, '');
 ---
-<header class="border-b border-stone-200 bg-white/90 backdrop-blur sticky top-0 z-50" x-data="{ mobileOpen: false, weddingTypesOpen: false }">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href={`${base}/`} class="text-xl font-serif font-semibold tracking-wide">Bebke</a>
+<header class="bg-brand-red text-black sticky top-0 z-50" x-data="{ mobileOpen: false, weddingTypesOpen: false }">
+  <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href={`${base}/`} class="script text-3xl leading-none">bebke</a>
 
-    <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-      <a href={`${base}/`} class="hover:text-rose-600 transition-colors">{t.nav.home}</a>
-      <a href={`${base}/about/`} class="hover:text-rose-600 transition-colors">{t.nav.about}</a>
+    <nav class="hidden md:flex items-center gap-7 text-base font-bold">
+      <a href={`${base}/`} class:list={["hover:underline decoration-2 underline-offset-4", isActive(`${base}/`) && "underline"]}>{t.nav.home}</a>
+      <a href={`${base}/about/`} class:list={["hover:underline decoration-2 underline-offset-4", isActive(`${base}/about/`) && "underline"]}>{t.nav.about}</a>
 
       <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-        <a href={`${base}/gallery/`} class="hover:text-rose-600 transition-colors">{t.nav.gallery}</a>
-        <div x-show="open" x-cloak x-transition class="absolute top-full mt-2 bg-white shadow-lg rounded-md py-2 min-w-[160px] border border-stone-100">
+        <a href={`${base}/gallery/`} class:list={["hover:underline decoration-2 underline-offset-4", isActive(`${base}/gallery/`) && "underline"]}>{t.nav.gallery}</a>
+        <div x-show="open" x-cloak x-transition class="absolute top-full mt-3 bg-white text-black shadow-lg py-2 min-w-[160px] border border-black/10 font-medium text-sm">
+          <div class="px-4 py-1 text-xs uppercase tracking-wide text-black/50">{t.nav.weddingTypes}</div>
           {t.nav.weddingTypeLinks.map((item) => (
-            <a href={`${base}${item.href}`} class="block px-4 py-2 text-sm hover:bg-rose-50 hover:text-rose-600">{item.label}</a>
+            <a href={`${base}${item.href}`} class="block px-4 py-2 hover:bg-brand-mint">{item.label}</a>
           ))}
         </div>
       </div>
 
-      <a href={`${base}/blog/`} class="hover:text-rose-600 transition-colors">{t.nav.blog}</a>
-      <a href={`${base}/contact/`} class="hover:text-rose-600 transition-colors">{t.nav.contact}</a>
+      <a href={`${base}/blog/`} class:list={["hover:underline decoration-2 underline-offset-4", isActive(`${base}/blog/`) && "underline"]}>{t.nav.blog}</a>
+      <a href={`${base}/contact/`} class:list={["hover:underline decoration-2 underline-offset-4", isActive(`${base}/contact/`) && "underline"]}>{t.nav.contact}</a>
     </nav>
 
     <div class="flex items-center gap-4">
-      <a href={t.nav.langSwitchHref} class="text-sm font-semibold border border-stone-300 rounded-full px-3 py-1 hover:bg-stone-100">{t.nav.langSwitchLabel}</a>
+      <a href={t.nav.langSwitchHref} class="text-sm font-bold border-2 border-black rounded-full px-3 py-1 hover:bg-black hover:text-brand-red transition-colors">{t.nav.langSwitchLabel}</a>
       <button class="md:hidden" @click="mobileOpen = !mobileOpen" aria-label="Menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
       </button>
     </div>
   </div>
 
-  <div x-show="mobileOpen" x-cloak class="md:hidden border-t border-stone-200 bg-white px-6 py-4 flex flex-col gap-3 text-sm font-medium">
+  <div x-show="mobileOpen" x-cloak class="md:hidden border-t border-black/20 px-6 py-4 flex flex-col gap-3 text-lg font-bold">
     <a href={`${base}/`}>{t.nav.home}</a>
     <a href={`${base}/about/`}>{t.nav.about}</a>
     <a href={`${base}/gallery/`}>{t.nav.gallery}</a>

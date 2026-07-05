@@ -3,38 +3,37 @@ import Layout from '../../../layouts/Layout.astro';
 import { blog } from '../../../data/site.en';
 ---
 <Layout lang="en" dir="ltr" title={blog.title} description={blog.description} canonical="https://bebke.com/en/blog/">
-  <section class="max-w-4xl mx-auto px-6 pt-20 pb-10 text-center">
-    <h1 class="text-4xl md:text-5xl font-serif font-semibold">{blog.heroH1}</h1>
-    <p class="mt-4 text-stone-600 max-w-2xl mx-auto">{blog.heroSub}</p>
+  <section class="bg-brand-cream px-6 py-20 text-center">
+    <h1 class="text-5xl md:text-7xl font-black">Welcome to our <span class="script font-normal">Blog.</span></h1>
+    <p class="mt-4 max-w-2xl mx-auto text-lg font-medium">{blog.heroSub}</p>
   </section>
 
-  <section class="max-w-5xl mx-auto px-6 pb-8 flex flex-wrap gap-2 justify-center">
-    {blog.categories.map((c) => (
-      <span class="border border-stone-300 rounded-full px-4 py-1 text-sm text-stone-600">{c}</span>
-    ))}
+  <section class="bg-white py-8 px-6 border-y-2 border-black">
+    <div class="max-w-6xl mx-auto flex flex-wrap gap-3 justify-center">
+      {blog.categories.map((c) => (
+        <span class="border-2 border-black rounded-full px-4 py-1 text-sm font-bold">{c}</span>
+      ))}
+    </div>
   </section>
 
-  <section class="max-w-5xl mx-auto px-6 py-10 grid md:grid-cols-2 gap-6">
+  <section class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-8">
     {blog.posts.map((post) => (
-      <article class="border border-stone-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-        <p class="text-xs text-stone-400 mb-2">{post.date}</p>
-        <h2 class="font-serif text-xl font-semibold mb-2">{post.title}</h2>
-        <p class="text-stone-600 text-sm">{post.excerpt}</p>
-        <span class="inline-block mt-4 text-rose-600 font-semibold text-sm">Read more →</span>
+      <article class="border-2 border-black p-6 hover:bg-brand-mint transition-colors">
+        <p class="text-sm font-bold text-black/50">{post.date}</p>
+        <h2 class="text-2xl font-black mt-2">{post.title}</h2>
+        <p class="mt-3 text-black/70">{post.excerpt}</p>
       </article>
     ))}
   </section>
 
-  <section class="bg-stone-100 py-16">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <h2 class="font-serif text-2xl font-semibold mb-4">{blog.footerIntroTitle}</h2>
-      <p class="text-stone-700">{blog.footerIntroBody}</p>
-      <a href="/en/gallery/" class="inline-block mt-6 text-rose-600 font-semibold hover:underline">{blog.footerCta}</a>
-    </div>
+  <section class="bg-brand-green text-white py-16 px-6 text-center">
+    <h2 class="text-2xl md:text-3xl font-black">{blog.footerIntroTitle}</h2>
+    <p class="mt-4 max-w-2xl mx-auto">{blog.footerIntroBody}</p>
+    <a href="/en/gallery/" class="inline-block mt-6 font-bold underline underline-offset-4">{blog.footerCta}</a>
   </section>
 
-  <section class="py-16 text-center">
-    <p class="text-lg text-stone-700 mb-4">{blog.closingBody}</p>
-    <a href="/en/contact/" class="bg-rose-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-rose-700">{blog.closingCta}</a>
+  <section class="bg-brand-red text-black py-16 px-6 text-center">
+    <p class="text-xl font-bold">{blog.closingBody}</p>
+    <a href="/en/contact/" class="inline-block mt-4 bg-black text-brand-red px-8 py-3 font-bold rounded-full border-2 border-black hover:bg-white hover:text-black transition-colors">{blog.closingCta}</a>
   </section>
 </Layout>

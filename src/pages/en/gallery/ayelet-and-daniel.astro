@@ -1,38 +1,33 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { galleryTemplate } from '../../../data/site.en';
-const t = galleryTemplate;
+
+const colColors = ['bg-brand-green text-white', 'bg-brand-yellow text-black', 'bg-brand-sky text-black'];
 ---
-<Layout lang="en" dir="ltr" title={t.title} description={t.description} canonical={`https://bebke.com/en/gallery/${t.slug}/`}>
-  <section class="max-w-4xl mx-auto px-6 pt-20 pb-10 text-center">
-    <h1 class="text-4xl md:text-5xl font-serif font-semibold">{t.heroH1}</h1>
-    <p class="mt-4 text-stone-500">{t.heroSub}</p>
+<Layout lang="en" dir="ltr" title={galleryTemplate.title} description={galleryTemplate.description} canonical={`https://bebke.com/en/gallery/${galleryTemplate.slug}/`}>
+  <section class="bg-black text-white px-6 py-20 text-center">
+    <h1 class="text-4xl md:text-6xl font-black max-w-4xl mx-auto">{galleryTemplate.heroH1}</h1>
+    <p class="mt-4 script text-2xl text-brand-yellow">{galleryTemplate.heroSub}</p>
   </section>
 
-  <section class="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-8">
-    {t.storyColumns.map((col) => (
-      <div>
-        <h2 class="font-serif text-lg font-semibold mb-2">{col.title}</h2>
-        <p class="text-stone-600 text-sm">{col.body}</p>
+  <section class="grid md:grid-cols-3">
+    {galleryTemplate.storyColumns.map((col, i) => (
+      <div class:list={["p-8 min-h-[280px] flex flex-col justify-center", colColors[i % colColors.length]]}>
+        <h2 class="font-black text-2xl mb-3">{col.title}</h2>
+        <p class="font-medium opacity-90">{col.body}</p>
       </div>
     ))}
   </section>
 
-  <section class="max-w-6xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-    {Array.from({ length: 8 }).map(() => (
-      <div class="aspect-square bg-stone-200 rounded-lg flex items-center justify-center text-stone-400 text-xs">Photo pending</div>
-    ))}
+  <section class="bg-brand-mint py-20 px-6 text-center">
+    <blockquote class="max-w-2xl mx-auto text-xl md:text-2xl font-medium italic">"{galleryTemplate.testimonial.quote}"</blockquote>
+    <p class="mt-6 script text-2xl">{galleryTemplate.testimonial.author}</p>
   </section>
 
-  <section class="bg-stone-100 py-16">
-    <blockquote class="max-w-2xl mx-auto px-6 text-center italic text-lg text-stone-700">
-      "{t.testimonial.quote}"
-      <footer class="mt-4 not-italic font-semibold text-rose-600">— {t.testimonial.author}</footer>
-    </blockquote>
-  </section>
-
-  <section class="py-16 text-center space-y-4">
-    <div><a href="/en/gallery/" class="text-rose-600 font-semibold hover:underline">{t.backToGallery}</a></div>
-    <div><a href="/en/contact/" class="inline-block bg-rose-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-rose-700">{t.contactCta}</a></div>
+  <section class="bg-brand-red text-black py-16 px-6 text-center">
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="/en/gallery/" class="bg-white text-black border-2 border-black px-8 py-3 font-bold rounded-full hover:bg-black hover:text-white transition-colors">{galleryTemplate.backToGallery}</a>
+      <a href="/en/contact/" class="bg-black text-brand-red px-8 py-3 font-bold rounded-full border-2 border-black hover:bg-white hover:text-black transition-colors">{galleryTemplate.contactCta}</a>
+    </div>
   </section>
 </Layout>

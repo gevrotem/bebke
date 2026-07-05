@@ -1,59 +1,66 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { home } from '../../data/site.en';
+
+const blocks = ['bg-brand-green text-white', 'bg-brand-yellow text-black', 'bg-brand-mint text-black', 'bg-brand-sky text-black'];
 ---
 <Layout lang="en" dir="ltr" title={home.title} description={home.description} canonical="https://bebke.com/en/">
-  <section class="max-w-4xl mx-auto px-6 pt-20 pb-16 text-center">
-    <h1 class="text-4xl md:text-6xl font-serif font-semibold leading-tight">{home.heroH1}</h1>
-    <p class="mt-6 text-lg text-stone-600 max-w-2xl mx-auto">{home.heroSub}</p>
-    <a href="/en/contact/" class="inline-block mt-8 bg-rose-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-rose-700 transition-colors">{home.heroCta}</a>
+  <section class="bg-black text-white px-6 pt-20 pb-24 text-center">
+    <h1 class="text-5xl md:text-8xl font-black leading-[0.95] tracking-tight max-w-5xl mx-auto">
+      We Plan <span class="script font-normal block md:inline">Weddings.</span>
+    </h1>
+    <p class="mt-4 text-xl md:text-2xl font-medium">But not the ordinary ones.</p>
+    <p class="mt-6 text-white/70 max-w-2xl mx-auto">{home.heroSub}</p>
+    <a href="/en/contact/" class="inline-block mt-10 bg-brand-red text-black border-2 border-black px-8 py-3 font-bold rounded-full hover:bg-white transition-colors">{home.heroCta}</a>
   </section>
 
-  <section class="bg-white py-14 border-y border-stone-100">
-    <p class="max-w-3xl mx-auto px-6 text-center text-lg text-stone-700">{home.introStrip}</p>
+  <section class="bg-brand-green text-white py-14">
+    <p class="max-w-3xl mx-auto px-6 text-center text-lg md:text-xl font-medium">{home.introStrip}</p>
   </section>
 
-  <section class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-8">
-    {home.pillars.map((p) => (
-      <div class="p-6 border border-stone-200 rounded-xl">
-        <h3 class="font-serif text-xl font-semibold mb-2">{p.title}</h3>
-        <p class="text-stone-600 text-sm">{p.body}</p>
+  <section class="grid md:grid-cols-4">
+    {home.pillars.map((p, i) => (
+      <div class:list={["p-8 min-h-[260px] flex flex-col justify-center", blocks[i % blocks.length]]}>
+        <h3 class="font-black text-2xl mb-3">{p.title}</h3>
+        <p class="text-sm md:text-base font-medium opacity-90">{p.body}</p>
       </div>
     ))}
   </section>
 
-  <section class="bg-stone-100 py-16">
+  <section class="bg-brand-yellow py-20">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-2xl font-serif font-semibold mb-8 text-center">Featured Weddings</h2>
-      <div class="grid md:grid-cols-3 gap-8">
+      <h2 class="text-4xl md:text-5xl font-black mb-10">Featured <span class="script font-normal">Weddings.</span></h2>
+      <div class="grid md:grid-cols-3 gap-6">
         {home.featuredWeddings.map((w) => (
-          <a href={w.href} class="block bg-white rounded-xl p-6 border border-stone-200 hover:shadow-lg transition-shadow">
-            <h3 class="font-serif text-lg font-semibold">{w.title}</h3>
-            {w.couple && <p class="text-stone-500 text-sm mt-1">{w.couple}</p>}
+          <a href={w.href} class="block bg-white p-6 border-2 border-black hover:bg-black hover:text-white transition-colors">
+            <h3 class="font-bold text-lg">{w.title}</h3>
+            {w.couple && <p class="script text-xl mt-2">{w.couple}</p>}
           </a>
         ))}
       </div>
-      <div class="text-center mt-10">
-        <a href="/en/gallery/" class="font-semibold text-rose-600 hover:underline">{home.galleryCta}</a>
+      <div class="mt-10">
+        <a href="/en/gallery/" class="font-bold text-lg underline underline-offset-4">{home.galleryCta}</a>
       </div>
     </div>
   </section>
 
-  <section class="max-w-6xl mx-auto px-6 py-16">
-    <h2 class="text-2xl font-serif font-semibold mb-8 text-center">From the Blog</h2>
-    <ul class="grid md:grid-cols-3 gap-6">
-      {home.blogPosts.map((post) => (
-        <li class="p-5 border border-stone-200 rounded-xl text-stone-700">{post}</li>
-      ))}
-    </ul>
-    <div class="text-center mt-10">
-      <a href="/en/blog/" class="font-semibold text-rose-600 hover:underline">{home.blogCta}</a>
+  <section class="bg-brand-cream py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-black mb-10">From the <span class="script font-normal">Blog.</span></h2>
+      <ul class="grid md:grid-cols-3 gap-6">
+        {home.blogPosts.map((post) => (
+          <li class="p-6 bg-white border-2 border-black font-medium">{post}</li>
+        ))}
+      </ul>
+      <div class="mt-10">
+        <a href="/en/blog/" class="font-bold text-lg underline underline-offset-4">{home.blogCta}</a>
+      </div>
     </div>
   </section>
 
-  <section class="bg-rose-600 text-white py-16 text-center">
-    <h2 class="text-3xl font-serif font-semibold">{home.closingH2}</h2>
-    <p class="mt-4">{home.closingBody}</p>
-    <a href="/en/contact/" class="inline-block mt-6 bg-white text-rose-600 px-8 py-3 rounded-full font-semibold hover:bg-stone-100 transition-colors">{home.closingCta}</a>
+  <section class="bg-brand-red text-black py-24 text-center px-6">
+    <h2 class="text-4xl md:text-6xl font-black">{home.closingH2}</h2>
+    <p class="mt-4 text-lg font-medium">{home.closingBody}</p>
+    <a href="/en/contact/" class="inline-block mt-8 bg-black text-brand-red px-8 py-3 font-bold rounded-full hover:bg-white hover:text-black border-2 border-black transition-colors">{home.closingCta}</a>
   </section>
 </Layout>

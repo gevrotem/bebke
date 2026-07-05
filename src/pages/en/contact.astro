@@ -3,50 +3,34 @@ import Layout from '../../layouts/Layout.astro';
 import { contact, contactInfo } from '../../data/site.en';
 ---
 <Layout lang="en" dir="ltr" title={contact.title} description={contact.description} canonical="https://bebke.com/en/contact/">
-  <section class="max-w-4xl mx-auto px-6 pt-20 pb-10 text-center">
-    <h1 class="text-4xl md:text-5xl font-serif font-semibold">{contact.heroH1}</h1>
-    <p class="mt-4 text-stone-500">{contact.heroSub}</p>
-  </section>
+  <section class="bg-brand-red text-black px-6 py-20">
+    <div class="max-w-5xl mx-auto text-center">
+      <h1 class="text-4xl md:text-6xl font-black">Let's do something <span class="script font-normal">amazing</span> together.</h1>
+      <p class="mt-4 font-bold text-lg max-w-xl mx-auto">{contact.formIntro}</p>
+    </div>
 
-  <section class="max-w-5xl mx-auto px-6 pb-20 grid md:grid-cols-2 gap-12">
-    <div>
-      <p class="text-stone-700 mb-8">{contact.formIntro}</p>
-      <form class="space-y-4" x-data="{ submitted: false }" @submit.prevent="submitted = true">
-        <div>
-          <label class="block text-sm font-medium mb-1">{contact.formFields.name}</label>
-          <input type="text" name="name" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-rose-500" />
-        </div>
-        <div>
-          <label class="block text-sm font-medium mb-1">{contact.formFields.email}</label>
-          <input type="email" name="email" required class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-rose-500" />
-        </div>
-        <div>
-          <label class="block text-sm font-medium mb-1">{contact.formFields.phone}</label>
-          <input type="tel" name="phone" class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-rose-500" />
-        </div>
-        <div>
-          <label class="block text-sm font-medium mb-1">{contact.formFields.date}</label>
-          <input type="text" name="date" class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-rose-500" />
-        </div>
-        <div>
-          <label class="block text-sm font-medium mb-1">{contact.formFields.message}</label>
-          <textarea name="message" rows="4" class="w-full border border-stone-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-rose-500"></textarea>
-        </div>
-        <button type="submit" class="bg-rose-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-rose-700" x-show="!submitted">{contact.formFields.submit}</button>
-        <p x-show="submitted" x-cloak class="text-green-700 font-medium">Thank you! We'll be in touch shortly.</p>
+    <div class="max-w-3xl mx-auto mt-14 grid md:grid-cols-2 gap-10">
+      <div class="space-y-3 font-bold text-lg">
+        <p>📞 {contactInfo.phoneTollFree}</p>
+        <p>💬 WhatsApp: {contactInfo.whatsapp}</p>
+        <p>🏢 Israel Office: {contactInfo.israelOffice}</p>
+        <p>✉️ {contactInfo.email}</p>
+      </div>
+
+      <form class="space-y-4" x-data="{ sent: false }" @submit.prevent="sent = true">
+        <input type="text" name="name" placeholder={contact.formFields.name} class="w-full bg-transparent border-b-2 border-black py-2 font-medium placeholder-black/60 focus:outline-none" required />
+        <input type="email" name="email" placeholder={contact.formFields.email} class="w-full bg-transparent border-b-2 border-black py-2 font-medium placeholder-black/60 focus:outline-none" required />
+        <input type="tel" name="phone" placeholder={contact.formFields.phone} class="w-full bg-transparent border-b-2 border-black py-2 font-medium placeholder-black/60 focus:outline-none" />
+        <input type="text" name="date" placeholder={contact.formFields.date} class="w-full bg-transparent border-b-2 border-black py-2 font-medium placeholder-black/60 focus:outline-none" />
+        <textarea name="message" placeholder={contact.formFields.message} rows="4" class="w-full bg-transparent border-2 border-black p-3 font-medium placeholder-black/60 focus:outline-none"></textarea>
+        <button type="submit" class="bg-black text-brand-red px-8 py-3 font-bold rounded-full border-2 border-black hover:bg-white hover:text-black transition-colors" x-show="!sent">{contact.formFields.submit}</button>
+        <p x-show="sent" x-cloak class="font-bold text-lg">Thank you! We'll be in touch shortly. 🎉</p>
       </form>
     </div>
+  </section>
 
-    <div class="bg-stone-100 rounded-xl p-8 space-y-4">
-      <h2 class="font-serif text-xl font-semibold mb-2">Get in Touch Directly</h2>
-      <p><strong>Call (toll-free):</strong> {contactInfo.phoneTollFree}</p>
-      <p><strong>WhatsApp:</strong> {contactInfo.whatsapp}</p>
-      <p><strong>Israel Office:</strong> {contactInfo.israelOffice}</p>
-      <p><strong>Email:</strong> <a href={`mailto:${contactInfo.email}`} class="text-rose-600 hover:underline">{contactInfo.email}</a></p>
-      <div class="pt-4 border-t border-stone-200 mt-4">
-        <p class="text-stone-600">{contact.faqTeaser}</p>
-        <a href="/en/contact/#faq" class="text-rose-600 font-semibold hover:underline">{contact.faqCta}</a>
-      </div>
-    </div>
+  <section class="bg-black text-white py-16 text-center px-6">
+    <p class="text-lg font-medium">{contact.faqTeaser}</p>
+    <a href="/en/blog/" class="inline-block mt-4 font-bold underline underline-offset-4">{contact.faqCta}</a>
   </section>
 </Layout>

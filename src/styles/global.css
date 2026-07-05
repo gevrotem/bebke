@@ -1,8 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-script: "Playfair Display", ui-serif, Georgia, serif;
+
+  --color-brand-red: #e42313;
+  --color-brand-yellow: #ffd400;
+  --color-brand-green: #0b7a3e;
+  --color-brand-mint: #ddf6d3;
+  --color-brand-sky: #d8f6f4;
+  --color-brand-cream: #fdf1de;
+  --color-brand-blue: #1e3fe0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+.script {
+  font-family: var(--font-script);
+  font-style: italic;
+  font-weight: 600;
 }
 
 [x-cloak] {
