@@ -69,6 +69,19 @@ export const about = {
   intro: "Bebke is a nimble studio built on creativity, professionalism, and a genuine love for the craft of wedding planning. Founded by Inbar and Gev Rotem, we've spent the last 12+ years helping couples from all over the world plan destination weddings in Israel — and picking up a few international awards for our creative, bespoke event design along the way.",
   processIntro: "The wedding is the grand finale, but we believe the journey there matters just as much. Over 12 years we've refined a process that lets us get to know you — what you want from your day (and just as important, what you don't).",
   processIntro2: 'However you like to be involved, wherever you are in the world, we make it work — including "Bebke Boot Camp," our signature whirlwind planning trip to Israel.',
+  pronunciation: {
+    word: 'Bebke',
+    ipa: '[beb-qu-e]',
+    tagline: 'People who work hard, search for meaning, and spread joy!',
+    note: '(the nickname of a wedding-obsessed dreamer)',
+  },
+  whatWeDoCategories: [
+    { title: 'Food and Catering', body: "With the help of food, it's possible to bring people together and open hearts — and that's exactly our mission. We craft a refreshing culinary world of colorful tastes and smells for every wedding, right down to the smallest details, with creative, professional and personable service." },
+    { title: 'Music', body: "Music is an inseparable part of the journey to a successful event. It builds a mood, awakens emotions, sweeps the guests away and tells your story. Our musical team builds a live line-up and offers advice that specializes in integrating the music with the rest of the event, as an inseparable part of the whole experience." },
+    { title: 'Bar', body: "The drinking and alcohol experience brings the advanced world of your event, enriching and creating a mood. This is a fabulous tool to create a different experience unique to your wedding, joining all the components of the service, whatever the style of your event, with great thought to professional and fresh experience which understands how to operate an event." },
+    { title: 'Our Team', body: "To succeed in creating an event in Israel and running it requires a professional staff who work quickly, skillfully, and efficiently. We understand well the complexity of the tasks involved and the need to complete everything efficiently and on time. They are the first to arrive and the last to leave the event, always with a smile, thrilled to be able to produce another special event." },
+    { title: 'Production', body: "A careful eye for scheduling and detail, managing the complex process of creating and building your day at the highest possible level. Involved in every stage and detail, so nothing falls between the cracks." },
+  ],
   process: [
     { title: 'Calling Bebke', body: 'Your first hello.' },
     { title: 'Meet for Coffee', body: 'Getting to know each other, no pressure.' },

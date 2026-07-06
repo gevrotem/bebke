@@ -43,11 +43,29 @@ const langSwitchHref = path.replace(/^\/(en|he)/, `/${otherLang}`) || `/${otherL
     </div>
   </div>
 
-  <div x-show="mobileOpen" x-cloak class="md:hidden border-t border-black/20 px-6 py-4 flex flex-col gap-3 text-lg font-bold">
-    <a href={`${base}/`}>{t.nav.home}</a>
-    <a href={`${base}/about/`}>{t.nav.about}</a>
-    <a href={`${base}/gallery/`}>{t.nav.gallery}</a>
-    <a href={`${base}/blog/`}>{t.nav.blog}</a>
-    <a href={`${base}/contact/`}>{t.nav.contact}</a>
+  <div x-show="mobileOpen" x-cloak x-transition class="md:hidden fixed inset-0 bg-brand-red z-50 flex flex-col">
+    <div class="flex items-center justify-between px-6 py-5">
+      <span class="text-2xl">☎</span>
+      <a href={`${base}/`} class="script text-3xl">bebke</a>
+      <button @click="mobileOpen = false" aria-label="Close" class="text-2xl font-black">✕</button>
+    </div>
+    <div class="flex-1 flex items-start justify-center gap-16 pt-10 text-xl font-bold">
+      <div class="flex flex-col gap-5">
+        <a href={`${base}/`} @click="mobileOpen = false">{t.nav.home}</a>
+        <a href={`${base}/gallery/`} @click="mobileOpen = false">{t.nav.gallery}</a>
+        <a href={`${base}/about/`} @click="mobileOpen = false">{t.nav.about}</a>
+        <a href={`${base}/contact/`} @click="mobileOpen = false">{t.nav.contact}</a>
+      </div>
+      <div class="flex flex-col gap-5">
+        <a href={`${base}/blog/`} @click="mobileOpen = false">{t.nav.blog}</a>
+        <a href={`${base}/gallery/`} @click="mobileOpen = false">Creating Lab</a>
+        <button @click="weddingTypesOpen = !weddingTypesOpen" class="text-left underline decoration-2 underline-offset-4">{t.nav.weddingTypes}</button>
+        <div x-show="weddingTypesOpen" x-cloak class="flex flex-col gap-2 text-sm font-medium pl-1">
+          {t.nav.weddingTypeLinks.map((item) => (
+            <a href={`${base}${item.href}`} @click="mobileOpen = false">{item.label}</a>
+          ))}
+        </div>
+      </div>
+    </div>
   </div>
 </header>

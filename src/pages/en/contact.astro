@@ -15,6 +15,14 @@ import { contact, contactInfo } from '../../data/site.en';
         <p>💬 WhatsApp: {contactInfo.whatsapp}</p>
         <p>🏢 Israel Office: {contactInfo.israelOffice}</p>
         <p>✉️ {contactInfo.email}</p>
+        <div class="pt-4">
+          <p class="text-sm font-bold uppercase tracking-wide mb-2">Follow us:</p>
+          <div class="flex gap-4 text-2xl">
+            <a href="https://pinterest.com" target="_blank" rel="noopener" aria-label="Pinterest">📌</a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+          </div>
+        </div>
       </div>
 
       <form class="space-y-4" x-data="{ sent: false }" @submit.prevent="sent = true">

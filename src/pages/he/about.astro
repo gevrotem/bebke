@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { about } from '../../data/site.he';
 
 const valueColors = ['bg-brand-green text-white', 'bg-brand-yellow text-black', 'bg-brand-mint text-black', 'bg-brand-sky text-black', 'bg-black text-white'];
+const processIcons = ['📞', '☕', '💡', '📝', '🤝', '🎥', '📣', '🥂'];
 ---
 <Layout lang="he" dir="rtl" title={about.title} description={about.description} canonical="https://bebke.co.il/he/about/">
   <section class="relative text-white px-6 pt-20 pb-24 text-center overflow-hidden">
@@ -18,56 +19,76 @@ const valueColors = ['bg-brand-green text-white', 'bg-brand-yellow text-black', 
     <p class="max-w-3xl mx-auto px-6 text-center text-lg md:text-xl font-medium">{about.intro}</p>
   </section>
 
+  <section class="bg-brand-yellow py-16 text-center">
+    <div class="max-w-md mx-auto px-6">
+      <span class="text-2xl">🔊</span>
+      <h2 class="text-4xl md:text-5xl font-black mt-2">{about.pronunciation.word}</h2>
+      <p class="script text-3xl mt-1">{about.pronunciation.ipa}</p>
+      <p class="italic mt-4 text-black/80">{about.pronunciation.tagline}</p>
+      <p class="text-sm text-black/60 mt-1">{about.pronunciation.note}</p>
+    </div>
+  </section>
+
   <section class="max-w-4xl mx-auto px-6 py-16 text-center">
     <p class="text-lg text-black/80">{about.processIntro}</p>
     <p class="text-lg text-black/80 mt-4">{about.processIntro2}</p>
   </section>
 
-  <section class="bg-black text-white py-16">
+  <section class="bg-brand-yellow py-16">
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-4xl md:text-5xl font-black mb-10 text-center">התהליך <span class="script font-normal">שלנו.</span></h2>
-      <ol class="grid md:grid-cols-4 gap-6">
+      <ol class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
         {about.process.map((step, i) => (
-          <li class="border-2 border-white/30 p-5">
-            <span class="script text-2xl text-brand-yellow">{String(i + 1).padStart(2, '0')}</span>
-            <h3 class="font-bold text-lg mt-2">{step.title}</h3>
-            <p class="text-sm text-white/70 mt-1">{step.body}</p>
+          <li class="text-right">
+            <span class="text-xs font-bold text-black/50">{String(i + 1).padStart(2, '0')}</span>
+            <div class="text-3xl mt-1 mb-2">{processIcons[i % processIcons.length]}</div>
+            <h3 class="font-bold text-sm md:text-base">{step.title}</h3>
           </li>
         ))}
       </ol>
     </div>
   </section>
 
-  <section class="bg-brand-mint py-20">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl md:text-5xl font-black mb-10 text-center">הערכים <span class="script font-normal">שלנו.</span></h2>
-      <div class="grid md:grid-cols-5 gap-4">
-        {about.values.map((v, i) => (
-          <div class:list={["p-5 min-h-[200px] flex flex-col justify-center text-center", valueColors[i % valueColors.length]]}>
-            <h3 class="font-black text-lg mb-2">{v.title}</h3>
-            <p class="text-sm font-medium opacity-90">{v.body}</p>
-          </div>
-        ))}
+  <section class="bg-brand-yellow py-10">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+      <div class="md:order-2">
+        <img src="/images/photos/stock-4.webp" alt="הערכים שלנו" class="w-full h-72 object-cover" onerror="this.style.display='none'" />
+      </div>
+      <div class="md:order-1">
+        <h2 class="text-4xl md:text-5xl font-black mb-6">הערכים <span class="script font-normal">שלנו.</span></h2>
+        <ol class="space-y-2 text-lg font-medium">
+          {about.values.map((v, i) => (
+            <li>{i + 1}/ {v.title}</li>
+          ))}
+        </ol>
       </div>
     </div>
   </section>
 
-  <section class="bg-brand-sky py-20">
+  <section class="bg-brand-yellow py-20">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl md:text-5xl font-black mb-10">מה אנחנו <span class="script font-normal">עושים.</span></h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        {about.whatWeDo.map((item) => (
-          <div class="bg-white p-6 border-2 border-black">
-            <h3 class="font-bold text-lg mb-2">{item.title}</h3>
-            <p class="text-sm text-black/70">{item.body}</p>
+      <div class="flex items-center gap-3 mb-10">
+        <span class="text-3xl">🤙</span>
+        <h2 class="text-4xl md:text-5xl font-black">מה אנחנו <span class="script font-normal">עושים?</span></h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-x-12 gap-y-8">
+        {about.whatWeDoCategories.map((item) => (
+          <div>
+            <h3 class="font-black text-lg mb-2">{item.title}</h3>
+            <p class="text-sm text-black/70 leading-relaxed">{item.body}</p>
           </div>
         ))}
       </div>
-      <div class="mt-10 flex items-end gap-6">
+      <div class="mt-14 flex items-end gap-6">
         <img src="/images/photos/horse-guy.webp" alt="לא עוד חתונה רגילה" class="h-40 md:h-56 w-auto" />
         <p class="script text-2xl md:text-3xl">אף פעם לא חתונה רגילה.</p>
       </div>
     </div>
+  </section>
+
+  <section class="bg-brand-red text-black py-16 px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-black">רוצים לראות עוד <span class="script font-normal">חתונות?</span></h2>
+    <a href="/he/gallery/" class="inline-block mt-6 border-2 border-black rounded-full px-8 py-3 font-bold hover:bg-black hover:text-brand-red transition-colors">לגלריה ←</a>
   </section>
 
   <section class="bg-brand-red text-black py-24 text-center px-6">
