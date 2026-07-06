@@ -8,6 +8,10 @@ const t = lang === 'he' ? he : en;
 const base = `/${lang}`;
 const path = new URL(Astro.request.url).pathname;
 const isActive = (href: string) => path === href || path === href.replace(/\/$/, '');
+// Swap the current path's language prefix so the toggle works on any domain
+// (vercel.app preview, bebke.com, or bebke.co.il) without hardcoding a host.
+const otherLang = lang === 'he' ? 'en' : 'he';
+const langSwitchHref = path.replace(/^\/(en|he)/, `/${otherLang}`) || `/${otherLang}/`;
 ---
 <header class="bg-brand-red text-black sticky top-0 z-50" x-data="{ mobileOpen: false, weddingTypesOpen: false }">
   <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
@@ -32,7 +36,7 @@ const isActive = (href: string) => path === href || path === href.replace(/\/$/,
     </nav>
 
     <div class="flex items-center gap-4">
-      <a href={t.nav.langSwitchHref} class="text-sm font-bold border-2 border-black rounded-full px-3 py-1 hover:bg-black hover:text-brand-red transition-colors">{t.nav.langSwitchLabel}</a>
+      <a href={langSwitchHref} class="text-sm font-bold border-2 border-black rounded-full px-3 py-1 hover:bg-black hover:text-brand-red transition-colors">{t.nav.langSwitchLabel}</a>
       <button class="md:hidden" @click="mobileOpen = !mobileOpen" aria-label="Menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
       </button>
