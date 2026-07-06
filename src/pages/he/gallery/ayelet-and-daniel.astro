@@ -2,19 +2,27 @@
 import Layout from '../../../layouts/Layout.astro';
 import { galleryTemplate } from '../../../data/site.he';
 
-const colColors = ['bg-brand-green text-white', 'bg-brand-yellow text-black', 'bg-brand-sky text-black'];
+const storyPhotos = ['/images/photos/frieda-simeon-2.webp', '/images/photos/frieda-simeon-6.webp', '/images/photos/frieda-simeon-9.webp'];
 ---
 <Layout lang="he" dir="rtl" title={galleryTemplate.title} description={galleryTemplate.description} canonical={`https://bebke.co.il/he/gallery/${galleryTemplate.slug}/`}>
-  <section class="bg-black text-white px-6 py-20 text-center">
-    <h1 class="text-4xl md:text-6xl font-black max-w-4xl mx-auto">{galleryTemplate.heroH1}</h1>
-    <p class="mt-4 script text-2xl text-brand-yellow">{galleryTemplate.heroSub}</p>
+  <section class="relative text-white px-6 py-24 text-center overflow-hidden">
+    <img src="/images/photos/frieda-simeon-10.webp" alt={galleryTemplate.heroH1} class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black/55"></div>
+    <div class="relative">
+      <h1 class="text-4xl md:text-6xl font-black max-w-4xl mx-auto">{galleryTemplate.heroH1}</h1>
+      <p class="mt-4 script text-2xl text-brand-yellow">{galleryTemplate.heroSub}</p>
+    </div>
   </section>
 
   <section class="grid md:grid-cols-3">
     {galleryTemplate.storyColumns.map((col, i) => (
-      <div class:list={["p-8 min-h-[280px] flex flex-col justify-center", colColors[i % colColors.length]]}>
-        <h2 class="font-black text-2xl mb-3">{col.title}</h2>
-        <p class="font-medium opacity-90">{col.body}</p>
+      <div class="relative min-h-[420px] flex flex-col justify-end p-8 text-white overflow-hidden">
+        <img src={storyPhotos[i % storyPhotos.length]} alt={col.title} class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="relative">
+          <h2 class="font-black text-2xl mb-3">{col.title}</h2>
+          <p class="font-medium opacity-90">{col.body}</p>
+        </div>
       </div>
     ))}
   </section>

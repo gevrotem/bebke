@@ -3,15 +3,21 @@ import Layout from '../../layouts/Layout.astro';
 import { home } from '../../data/site.en';
 
 const blocks = ['bg-brand-green text-white', 'bg-brand-yellow text-black', 'bg-brand-mint text-black', 'bg-brand-sky text-black'];
+const pillarPhotos = [null, '/images/photos/frieda-simeon-3.webp', '/images/photos/bouquet-toss.webp', null];
 ---
 <Layout lang="en" dir="ltr" title={home.title} description={home.description} canonical="https://bebke.com/en/">
-  <section class="bg-black text-white px-6 pt-20 pb-24 text-center">
-    <h1 class="text-5xl md:text-8xl font-black leading-[0.95] tracking-tight max-w-5xl mx-auto">
-      We Plan <span class="script font-normal block md:inline">Weddings.</span>
-    </h1>
-    <p class="mt-4 text-xl md:text-2xl font-medium">But not the ordinary ones.</p>
-    <p class="mt-6 text-white/70 max-w-2xl mx-auto">{home.heroSub}</p>
-    <a href="/en/contact/" class="inline-block mt-10 bg-brand-red text-black border-2 border-black px-8 py-3 font-bold rounded-full hover:bg-white transition-colors">{home.heroCta}</a>
+  <section class="relative text-white overflow-hidden">
+    <img src="/images/photos/frieda-simeon-1.webp" alt="Bebke wedding celebration" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black/45"></div>
+    <div class="absolute top-6 right-6 z-10 hidden sm:flex items-center justify-center w-28 h-28 rounded-full bg-brand-blue text-brand-yellow text-center text-xs font-bold leading-tight p-3 rotate-6">
+      Erase everything you know about weddings
+    </div>
+    <div class="relative px-6 pt-16 pb-24 text-center">
+      <img src="/images/brand/hero-headline.webp" alt="We Plan Weddings." class="mx-auto w-full max-w-3xl h-auto" />
+      <p class="mt-2 text-xl md:text-2xl font-medium">But not the ordinary ones.</p>
+      <p class="mt-6 text-white/80 max-w-2xl mx-auto">{home.heroSub}</p>
+      <a href="/en/contact/" class="inline-block mt-10 bg-brand-red text-white border-2 border-white px-8 py-3 font-bold rounded-full hover:bg-white hover:text-brand-red transition-colors">{home.heroCta}</a>
+    </div>
   </section>
 
   <section class="bg-brand-green text-white py-14">
@@ -20,10 +26,21 @@ const blocks = ['bg-brand-green text-white', 'bg-brand-yellow text-black', 'bg-b
 
   <section class="grid md:grid-cols-4">
     {home.pillars.map((p, i) => (
-      <div class:list={["p-8 min-h-[260px] flex flex-col justify-center", blocks[i % blocks.length]]}>
-        <h3 class="font-black text-2xl mb-3">{p.title}</h3>
-        <p class="text-sm md:text-base font-medium opacity-90">{p.body}</p>
-      </div>
+      pillarPhotos[i] ? (
+        <div class="relative min-h-[260px] flex flex-col justify-end p-8 text-white overflow-hidden">
+          <img src={pillarPhotos[i]} alt={p.title} class="absolute inset-0 w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-black/40"></div>
+          <div class="relative">
+            <h3 class="font-black text-2xl mb-3">{p.title}</h3>
+            <p class="text-sm md:text-base font-medium opacity-90">{p.body}</p>
+          </div>
+        </div>
+      ) : (
+        <div class:list={["p-8 min-h-[260px] flex flex-col justify-center", blocks[i % blocks.length]]}>
+          <h3 class="font-black text-2xl mb-3">{p.title}</h3>
+          <p class="text-sm md:text-base font-medium opacity-90">{p.body}</p>
+        </div>
+      )
     ))}
   </section>
 

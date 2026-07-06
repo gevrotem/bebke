@@ -4,13 +4,13 @@
   --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
   --font-script: "Playfair Display", ui-serif, Georgia, serif;
 
-  --color-brand-red: #e42313;
-  --color-brand-yellow: #ffd400;
-  --color-brand-green: #0b7a3e;
+  --color-brand-red: #f42727;
+  --color-brand-yellow: #ffd600;
+  --color-brand-green: #146931;
   --color-brand-mint: #ddf6d3;
-  --color-brand-sky: #d8f6f4;
-  --color-brand-cream: #fdf1de;
-  --color-brand-blue: #1e3fe0;
+  --color-brand-sky: #dff9fc;
+  --color-brand-cream: #fff8e9;
+  --color-brand-blue: #0900bd;
 }
 
 html {
