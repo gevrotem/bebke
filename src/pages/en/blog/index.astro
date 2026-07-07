@@ -2,11 +2,17 @@
 import Layout from '../../../layouts/Layout.astro';
 import { blog } from '../../../data/site.en';
 
-const postPhotos = ['/images/photos/stock-1.webp', '/images/photos/stock-2.webp', '/images/photos/stock-3.webp', '/images/photos/stock-4.webp', '/images/photos/stock-5.webp', '/images/photos/frieda-simeon-2.webp', '/images/photos/frieda-simeon-6.webp'];
+const postPhotos = [
+  '/images/mosaic/mosaic-01.webp',
+  '/images/mosaic/mosaic-13.webp',
+  '/images/mosaic/mosaic-04.webp',
+  '/images/mosaic/mosaic-06.webp',
+  '/images/mosaic/mosaic-07.webp',
+];
 ---
 <Layout lang="en" dir="ltr" title={blog.title} description={blog.description} canonical="https://bebke.com/en/blog/">
   <section class="bg-brand-cream px-6 py-20 text-center">
-    <h1 class="text-5xl md:text-7xl font-black">Welcome to our <span class="script font-normal">Blog.</span></h1>
+    <h1 class="text-5xl md:text-7xl font-black">Welcome to our <span class="script font-normal">blog.</span></h1>
     <p class="mt-4 max-w-2xl mx-auto text-lg font-medium">{blog.heroSub}</p>
   </section>
 
@@ -28,14 +34,16 @@ const postPhotos = ['/images/photos/stock-1.webp', '/images/photos/stock-2.webp'
     </div>
   </section>
 
-  <section class="max-w-6xl mx-auto px-6 py-10 grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+  <section class="max-w-6xl mx-auto px-6 py-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
     {blog.posts.map((post, i) => (
-      <article class="group">
+      <article class="group flex flex-col">
         <div class="overflow-hidden">
-          <img src={postPhotos[i % postPhotos.length]} alt={post.title} class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+          <img src={postPhotos[i % postPhotos.length]} alt={post.title} width="400" height="288" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
         </div>
         <p class="text-xs font-bold text-black/50 mt-3">{post.date}</p>
         <h2 class="text-lg font-black mt-1 leading-snug">{post.title}</h2>
+        <p class="text-sm text-black/60 mt-2 flex-1">{post.excerpt}</p>
+        <a href="/en/blog/" class="mt-3 text-sm font-bold underline underline-offset-4 hover:no-underline">Read more →</a>
       </article>
     ))}
   </section>
@@ -45,12 +53,12 @@ const postPhotos = ['/images/photos/stock-1.webp', '/images/photos/stock-2.webp'
   </div>
 
   <section class="relative text-white overflow-hidden">
-    <img src="/images/photos/frieda-simeon-3.webp" alt="What is Bebke?" class="absolute inset-0 w-full h-full object-cover" />
+    <img src="/images/mosaic/mosaic-12-couple.webp" alt="What is Bebke?" class="absolute inset-0 w-full h-full object-cover" />
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="relative px-6 py-24 text-center">
       <h2 class="text-4xl md:text-5xl font-black">What is <span class="script font-normal">Bebke?</span></h2>
       <p class="mt-3 max-w-xl mx-auto">{blog.footerIntroBody}</p>
-      <a href="/en/about/" class="inline-block mt-6 border-2 border-white rounded-full px-8 py-3 font-bold hover:bg-white hover:text-black transition-colors">Read →</a>
+      <a href="/en/gallery/" class="inline-block mt-6 border-2 border-white rounded-full px-8 py-3 font-bold hover:bg-white hover:text-black transition-colors">{blog.footerCta}</a>
     </div>
   </section>
 
