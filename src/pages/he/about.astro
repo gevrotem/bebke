@@ -6,17 +6,20 @@ const valueColors = ['bg-brand-green text-white', 'bg-brand-yellow text-black', 
 const processIcons = ['/images/process/01.webp', '/images/process/02.webp', '/images/process/03.webp', '/images/process/04.webp', '/images/process/05.webp', '/images/process/06.webp', '/images/process/07.webp', '/images/process/08.webp'];
 ---
 <Layout lang="he" dir="rtl" title={about.title} description={about.description} canonical="https://bebke.co.il/he/about/">
-  <section class="relative text-white px-6 pt-20 pb-24 text-center overflow-hidden">
-    <img src="/images/photos/frieda-simeon-5.webp" alt="זוג בחתונת בבקה" class="absolute inset-0 w-full h-full object-cover" />
-    <div class="absolute inset-0 bg-brand-red/80"></div>
+  <section class="relative text-white px-6 pt-24 pb-16 text-center overflow-hidden">
+    <img src="/images/about/hero-this-is-bebke.webp" alt="מייסדי בבקה, ענבר וגבע רותם" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black/25"></div>
     <div class="relative">
       <h1 class="text-5xl md:text-8xl font-black">{about.heroH1}</h1>
-      <p class="mt-4 font-bold text-lg">{about.heroSub}</p>
+      <p class="mt-6 font-bold text-lg">{about.heroSub}</p>
     </div>
   </section>
 
   <section class="bg-brand-yellow py-16">
-    <p class="max-w-3xl mx-auto px-6 text-center text-lg md:text-xl font-medium">{about.intro}</p>
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-black mb-6">מי <span class="script font-normal">אנחנו?</span></h2>
+      <p class="text-lg md:text-xl font-medium">{about.intro}</p>
+    </div>
   </section>
 
   <section class="bg-brand-yellow py-16 text-center">

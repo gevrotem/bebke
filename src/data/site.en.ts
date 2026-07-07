@@ -22,6 +22,12 @@ export const nav = {
 };
 
 export const footer = {
+  ctaSeenEnoughTitle: "We've Seen Enough.",
+  ctaSeenEnoughBody: "Let's talk about your wedding.",
+  ctaSeenEnoughCta: 'Call Bebke →',
+  ctaWantMoreTitle: 'I Want More.',
+  ctaWantMoreBody: 'Meet the studio and the people behind it.',
+  ctaWantMoreCta: 'About →',
   rights: `© ${new Date().getFullYear()} Bebke. All Rights Reserved.`,
   sitemap: 'Sitemap',
 };
