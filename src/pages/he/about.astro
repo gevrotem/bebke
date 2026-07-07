@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { about } from '../../data/site.he';
 
 const valueColors = ['bg-brand-green text-white', 'bg-brand-yellow text-black', 'bg-brand-mint text-black', 'bg-brand-sky text-black', 'bg-black text-white'];
-const processIcons = ['📞', '☕', '💡', '📝', '🤝', '🎥', '📣', '🥂'];
+const processIcons = ['/images/process/01.webp', '/images/process/02.webp', '/images/process/03.webp', '/images/process/04.webp', '/images/process/05.webp', '/images/process/06.webp', '/images/process/07.webp', '/images/process/08.webp'];
 ---
 <Layout lang="he" dir="rtl" title={about.title} description={about.description} canonical="https://bebke.co.il/he/about/">
   <section class="relative text-white px-6 pt-20 pb-24 text-center overflow-hidden">
@@ -41,7 +41,7 @@ const processIcons = ['📞', '☕', '💡', '📝', '🤝', '🎥', '📣', '�
         {about.process.map((step, i) => (
           <li class="text-right">
             <span class="text-xs font-bold text-black/50">{String(i + 1).padStart(2, '0')}</span>
-            <div class="text-3xl mt-1 mb-2">{processIcons[i % processIcons.length]}</div>
+            <div class="h-14 mt-1 mb-2 flex items-end"><img src={processIcons[i % processIcons.length]} alt={step.title} class="h-14 w-auto" loading="lazy" /></div>
             <h3 class="font-bold text-sm md:text-base">{step.title}</h3>
           </li>
         ))}
