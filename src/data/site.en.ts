@@ -61,6 +61,16 @@ export const home = {
   closingH2: 'Ready to Plan Your Wedding in Israel?',
   closingBody: "Tell us a little about you, and we'll get back to you fast.",
   closingCta: 'Get in Touch →',
+  testimonials: [
+    {
+      quote: "After a quick search online, we came across pictures of Bebke's events. Every single one was unique and special. Then we saw the line: 'For couples who want a different kind of wedding.' Bingo.",
+      author: 'Mor & Rotem',
+    },
+    {
+      quote: "Bebke took everything we loved and turned it into a day that felt completely, unmistakably us — bold, personal, and nothing like the weddings we'd been to before.",
+      author: 'Lauren & Daniel',
+    },
+  ],
 };
 
 export const about = {
