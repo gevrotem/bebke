@@ -8,6 +8,8 @@ export const nav = {
   gallery: 'Gallery',
   blog: 'Blog',
   contact: 'Contact Us',
+  businessEvents: 'Business Events',
+  creationLab: 'Creation Lab',
   weddingTypes: 'Wedding Types',
   weddingTypeLinks: [
     { label: 'Nature', href: '/gallery/?type=nature' },

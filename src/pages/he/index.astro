@@ -1,19 +1,23 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { home } from '../../data/site.he';
-
-const blocks = ['bg-brand-green text-white', 'bg-brand-yellow text-black', 'bg-brand-mint text-black', 'bg-brand-sky text-black'];
-const pillarPhotos = [null, '/images/photos/frieda-simeon-3.webp', '/images/photos/bouquet-toss.webp', null];
 ---
 <Layout lang="he" dir="rtl" title={home.title} description={home.description} canonical="https://bebke.co.il/he/">
+  <!-- Hero -->
   <section class="relative text-white overflow-hidden">
-    <img src="/images/photos/frieda-simeon-1.webp" alt="חתונת בבקה" class="absolute inset-0 w-full h-full object-cover" />
-    <div class="absolute inset-0 bg-black/45"></div>
-    <div class="absolute top-6 left-6 z-10 hidden sm:flex items-center justify-center w-28 h-28 rounded-full bg-brand-blue text-brand-yellow text-center text-xs font-bold leading-tight p-3 -rotate-6">
+    <img src="/images/photos/hero-van-festival.webp" alt="חברים חוגגים בוואן מקושט בפסטיבל" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black/35"></div>
+    <a href="/he/contact/" aria-label="התקשרו לבבקה" class="absolute top-6 right-6 z-10 flex items-center justify-center w-12 h-12 rounded-full bg-white/90 text-brand-blue hover:bg-white">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <circle cx="12" cy="12" r="3.2" />
+      </svg>
+    </a>
+    <div class="absolute top-6 left-6 z-10 hidden sm:flex items-center justify-center w-28 h-28 rounded-full bg-brand-blue text-brand-yellow text-center text-xs font-bold leading-tight p-3 -rotate-6 animate-[spin_20s_linear_infinite]">
       תשכחו כל מה שאתם יודעים על חתונות
     </div>
-    <div class="relative px-6 pt-16 pb-24 text-center">
-      <h1 class="text-5xl md:text-8xl font-black leading-[0.95] tracking-tight max-w-5xl mx-auto">
+    <div class="relative px-6 pt-24 pb-28 md:pt-32 md:pb-40 text-center">
+      <h1 class="text-5xl md:text-7xl font-black leading-[0.95] tracking-tight max-w-4xl mx-auto">
         {home.heroH1}
       </h1>
       <p class="mt-6 text-white/80 max-w-2xl mx-auto">{home.heroSub}</p>
@@ -25,24 +29,51 @@ const pillarPhotos = [null, '/images/photos/frieda-simeon-3.webp', '/images/phot
     <p class="max-w-3xl mx-auto px-6 text-center text-lg md:text-xl font-medium">{home.introStrip}</p>
   </section>
 
-  <section class="grid md:grid-cols-4">
-    {home.pillars.map((p, i) => (
-      pillarPhotos[i] ? (
-        <div class="relative min-h-[260px] flex flex-col justify-end p-8 text-white overflow-hidden">
-          <img src={pillarPhotos[i]} alt={p.title} class="absolute inset-0 w-full h-full object-cover" />
-          <div class="absolute inset-0 bg-black/40"></div>
-          <div class="relative">
-            <h3 class="font-black text-2xl mb-3">{p.title}</h3>
-            <p class="text-sm md:text-base font-medium opacity-90">{p.body}</p>
-          </div>
-        </div>
-      ) : (
-        <div class:list={["p-8 min-h-[260px] flex flex-col justify-center", blocks[i % blocks.length]]}>
-          <h3 class="font-black text-2xl mb-3">{p.title}</h3>
-          <p class="text-sm md:text-base font-medium opacity-90">{p.body}</p>
-        </div>
-      )
-    ))}
+  <!-- Photo mosaic / pillars -->
+  <section class="bg-white">
+    <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-[42vw] sm:auto-rows-[220px]">
+      <div class="relative overflow-hidden col-span-2 row-span-2">
+        <img src="/images/photos/neon-sign.webp" alt="שלט ניאון מותאם אישית לחתונה" class="absolute inset-0 w-full h-full object-cover" />
+      </div>
+      <div class="bg-brand-green text-white p-6 flex flex-col justify-center">
+        <h3 class="font-black text-xl mb-2">{home.pillars[0].title}</h3>
+        <p class="text-sm font-medium opacity-90">{home.pillars[0].body}</p>
+      </div>
+      <div class="relative overflow-hidden">
+        <img src="/images/photos/horse-guy.webp" alt="אורח בתחפושת שובבה בחתונת בבקה" class="absolute inset-0 w-full h-full object-cover" />
+      </div>
+      <div class="bg-brand-yellow text-black p-6 flex flex-col justify-center row-span-2">
+        <h3 class="font-black text-xl mb-2">{home.pillars[1].title}</h3>
+        <p class="text-sm font-medium opacity-90">{home.pillars[1].body}</p>
+      </div>
+      <div class="relative overflow-hidden col-span-2">
+        <img src="/images/photos/bouquet-toss.webp" alt="כלה זורקת זר פרחים" class="absolute inset-0 w-full h-full object-cover" />
+      </div>
+      <div class="relative overflow-hidden">
+        <img src="/images/photos/frieda-simeon-3.webp" alt="ידיים של כלה וחתן מקרוב" class="absolute inset-0 w-full h-full object-cover" />
+      </div>
+      <div class="bg-brand-red text-white p-6 flex flex-col justify-center">
+        <h3 class="font-black text-xl mb-2">{home.pillars[2].title}</h3>
+        <p class="text-sm font-medium opacity-90">{home.pillars[2].body}</p>
+      </div>
+      <div class="relative overflow-hidden">
+        <img src="/images/photos/frieda-simeon-9.webp" alt="עוגת חתונה פרחונית" class="absolute inset-0 w-full h-full object-cover" />
+      </div>
+      <div class="bg-brand-sky text-black p-6 flex flex-col justify-center col-span-2">
+        <h3 class="font-black text-xl mb-2">{home.pillars[3].title}</h3>
+        <p class="text-sm font-medium opacity-90">{home.pillars[3].body}</p>
+      </div>
+      <div class="relative overflow-hidden col-span-2">
+        <img src="/images/photos/stock-3.webp" alt="שולחן ערוך עם נרות ופרחים" class="absolute inset-0 w-full h-full object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="bg-brand-cream py-20 px-6 text-center">
+    <h2 class="text-3xl md:text-5xl font-black">{home.closingH2}</h2>
+    <p class="mt-4 text-lg font-medium max-w-2xl mx-auto">{home.closingBody}</p>
+    <a href="/he/contact/" class="inline-block mt-8 bg-brand-blue text-white px-8 py-3 font-bold rounded-full hover:bg-black transition-colors">{home.closingCta}</a>
   </section>
 
   <section class="bg-brand-yellow py-20">
@@ -62,6 +93,37 @@ const pillarPhotos = [null, '/images/photos/frieda-simeon-3.webp', '/images/phot
     </div>
   </section>
 
+  <!-- Testimonial -->
+  <section class="bg-brand-blue text-white py-24 px-6" x-data="{ slide: 0, total: 1 }">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-2xl md:text-3xl font-medium leading-snug">"אחרי חיפוש קצר באינטרנט, נתקלנו בתמונות מהאירועים של בבקה. כל אחד מהם היה ייחודי ומיוחד. אז ראינו את המשפט: 'לזוגות שרוצים חתונה אחרת'. בינגו."</p>
+      <p class="mt-6 script text-2xl text-brand-yellow">מור ורותם</p>
+      <div class="mt-8 flex items-center justify-center gap-2">
+        <button type="button" class="w-2.5 h-2.5 rounded-full bg-brand-yellow" aria-label="עדות 1" aria-current="true"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Creation Lab teaser -->
+  <section class="bg-brand-cream py-20 px-6 text-center">
+    <h2 class="text-3xl md:text-5xl font-black">מעבדת <span class="script font-normal">היצירה.</span></h2>
+    <p class="mt-4 text-lg font-medium max-w-2xl mx-auto">מאחורי כל חתונה של בבקה עומדת סדנת רעיונות — שבה מוקדשים לתכנון פרטים, סטים ורגעים הרבה לפני היום הגדול.</p>
+    <a href="#" class="inline-block mt-8 bg-black text-white px-8 py-3 font-bold rounded-full hover:bg-brand-red transition-colors">לגלות את מעבדת היצירה ←</a>
+  </section>
+
+  <!-- Backstage -->
+  <section class="bg-white py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-black mb-10">מאחורי <span class="script font-normal">הקלעים.</span></h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="relative overflow-hidden h-56"><img src="/images/photos/frieda-simeon-2.webp" alt="מאחורי הקלעים, בניית שער החופה" class="absolute inset-0 w-full h-full object-cover" /></div>
+        <div class="relative overflow-hidden h-56"><img src="/images/photos/frieda-simeon-7.webp" alt="הרכב החי מתארגן לפני הטקס" class="absolute inset-0 w-full h-full object-cover" /></div>
+        <div class="relative overflow-hidden h-56"><img src="/images/photos/frieda-simeon-6.webp" alt="פרטים אחרונים לפני הריקוד הראשון" class="absolute inset-0 w-full h-full object-cover" /></div>
+      </div>
+      <p class="mt-8 max-w-2xl text-lg font-medium">הרגעים שאף אורח לא רואה: צוות שבונה את השדה מאפס, בודק כל תזמון, כדי שביום עצמו כל מה שתרגישו הוא הקסם.</p>
+    </div>
+  </section>
+
   <section class="bg-brand-cream py-20">
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-4xl md:text-5xl font-black mb-10">מה <span class="script font-normal">חדש בבלוג.</span></h2>
@@ -74,11 +136,5 @@ const pillarPhotos = [null, '/images/photos/frieda-simeon-3.webp', '/images/phot
         <a href="/he/blog/" class="font-bold text-lg underline underline-offset-4">{home.blogCta}</a>
       </div>
     </div>
-  </section>
-
-  <section class="bg-brand-red text-black py-24 text-center px-6">
-    <h2 class="text-4xl md:text-6xl font-black">{home.closingH2}</h2>
-    <p class="mt-4 text-lg font-medium">{home.closingBody}</p>
-    <a href="/he/contact/" class="inline-block mt-8 bg-black text-brand-red px-8 py-3 font-bold rounded-full hover:bg-white hover:text-black border-2 border-black transition-colors">{home.closingCta}</a>
   </section>
 </Layout>

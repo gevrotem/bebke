@@ -22,6 +22,12 @@ export const nav = {
 export const footer = {
   rights: `© ${new Date().getFullYear()} בבקה. כל הזכויות שמורות.`,
   sitemap: 'מפת האתר',
+  ctaSeenEnoughTitle: 'ראיתי מספיק.',
+  ctaSeenEnoughBody: 'בואו נדבר על החתונה שלכם.',
+  ctaSeenEnoughCta: 'התקשרו לבבקה ←',
+  ctaWantMoreTitle: 'אני רוצה עוד.',
+  ctaWantMoreBody: 'תכירו את הסטודיו ואת האנשים מאחוריו.',
+  ctaWantMoreCta: 'אודות ←',
 };
 
 export const contactInfo = {
