@@ -8,6 +8,8 @@ export const nav = {
   gallery: 'גלריה',
   blog: 'בלוג',
   contact: 'צור קשר',
+  businessEvents: 'אירועי עסקים',
+  creationLab: 'מעבדת יצירה',
   weddingTypes: 'סוגי חתונות',
   weddingTypeLinks: [
     { label: 'טבע', href: '/gallery/?type=nature' },
