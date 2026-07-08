@@ -4,7 +4,7 @@ import { gallery } from '../../../data/site.en';
 
 // Stable photo assignment per wedding slug (not per array position) so sorting
 // never shuffles which photo belongs to which card.
-const photoPool = ['/images/photos/frieda-simeon-1.webp', '/images/photos/mosaic-12-couple.webp', '/images/photos/frieda-simeon-4.webp', '/images/photos/mosaic-09-horse.webp', '/images/photos/frieda-simeon-7.webp', '/images/photos/stock-3.webp', '/images/photos/mosaic-05.webp', '/images/photos/frieda-simeon-10.webp', '/images/photos/frieda-simeon-2.webp'];
+const photoPool = ['/images/photos/frieda-simeon-1.webp', '/images/mosaic/mosaic-12-couple.webp', '/images/photos/frieda-simeon-4.webp', '/images/mosaic/mosaic-09-horse.webp', '/images/photos/frieda-simeon-7.webp', '/images/photos/stock-3.webp', '/images/mosaic/mosaic-05.webp', '/images/photos/frieda-simeon-10.webp', '/images/photos/frieda-simeon-2.webp'];
 const photosBySlug = Object.fromEntries(gallery.weddings.map((w, i) => [w.slug, photoPool[i % photoPool.length]]));
 const itemsJson = JSON.stringify(gallery.weddings.map(w => ({ ...w, photo: photosBySlug[w.slug] })));
 ---
