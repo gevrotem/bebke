@@ -3,6 +3,21 @@ import Layout from '../../../layouts/Layout.astro';
 import { galleryTemplate } from '../../../data/site.en';
 
 const storyPhotos = ['/images/photos/frieda-simeon-2.webp', '/images/photos/frieda-simeon-6.webp', '/images/photos/frieda-simeon-9.webp'];
+
+const galleryPhotos = [
+  '/images/gallery/ayelet-and-daniel/photo-01.webp',
+  '/images/gallery/ayelet-and-daniel/photo-02.webp',
+  '/images/gallery/ayelet-and-daniel/photo-03.webp',
+  '/images/gallery/ayelet-and-daniel/photo-04.webp',
+  '/images/gallery/ayelet-and-daniel/photo-05.webp',
+  '/images/gallery/ayelet-and-daniel/photo-06.webp',
+  '/images/gallery/ayelet-and-daniel/photo-07.webp',
+  '/images/gallery/ayelet-and-daniel/photo-08.webp',
+  '/images/gallery/ayelet-and-daniel/photo-09.webp',
+  '/images/gallery/ayelet-and-daniel/photo-10.webp',
+  '/images/gallery/ayelet-and-daniel/photo-11.webp',
+  '/images/gallery/ayelet-and-daniel/photo-12.webp',
+];
 ---
 <Layout lang="en" dir="ltr" title={galleryTemplate.title} description={galleryTemplate.description} canonical={`https://bebke.com/en/gallery/${galleryTemplate.slug}/`}>
   <section class="relative text-white px-6 py-24 text-center overflow-hidden">
@@ -30,6 +45,16 @@ const storyPhotos = ['/images/photos/frieda-simeon-2.webp', '/images/photos/frie
   <section class="bg-brand-mint py-20 px-6 text-center">
     <blockquote class="max-w-2xl mx-auto text-xl md:text-2xl font-medium italic">"{galleryTemplate.testimonial.quote}"</blockquote>
     <p class="mt-6 script text-2xl">{galleryTemplate.testimonial.author}</p>
+  </section>
+
+  <section class="bg-white py-16 px-4 md:px-6">
+    <div class="columns-2 md:columns-4 gap-4 max-w-7xl mx-auto [column-fill:_balance]">
+      {galleryPhotos.map((src, i) => (
+        <div class="mb-4 break-inside-avoid overflow-hidden rounded-sm group">
+          <img src={src} alt={`${galleryTemplate.heroSub} — photo ${i + 1}`} loading="lazy" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+      ))}
+    </div>
   </section>
 
   <section class="bg-brand-red text-black py-16 px-6 text-center">
