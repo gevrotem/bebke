@@ -43,7 +43,6 @@ const langSwitchHref = path.replace(/^\/(en|he)/, `/${otherLang}`) || `/${otherL
       </div>
       <div class="flex flex-col gap-5">
         <a href={`${base}/blog/`} class:list={[isActive(`${base}/blog/`) && "underline decoration-2 underline-offset-4"]} @click="menuOpen = false">{t.nav.blog}</a>
-        <a href="#" @click="menuOpen = false">Creation Lab</a>
         <button @click="weddingTypesOpen = !weddingTypesOpen" class="text-left underline decoration-2 underline-offset-4">{t.nav.weddingTypes}</button>
         <div x-show="weddingTypesOpen" x-cloak class="flex flex-col gap-2 text-sm md:text-base font-medium pl-1">
           {t.nav.weddingTypeLinks.map((item) => (
